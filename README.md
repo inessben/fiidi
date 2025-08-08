@@ -1,70 +1,97 @@
-# Getting Started with Create React App
+# FIIDI - Site Vitrine
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Site vitrine officiel pour FIIDI, l'application et le festival dédiés au cinéma indépendant.
 
-## Available Scripts
+## 🚀 Démarrage rapide
 
-In the project directory, you can run:
+### Prérequis
+- Node.js (version 16 ou supérieure)
+- npm ou yarn
 
-### `npm start`
+### Installation
+```bash
+npm install
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Développement
+```bash
+npm start
+```
+Le site sera accessible sur [http://localhost:3000](http://localhost:3000)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Build de production
+```bash
+npm run build
+```
 
-### `npm test`
+## 📁 Structure du projet
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+src/
+├── components/          # Composants réutilisables
+│   ├── Header/         # Navigation principale
+│   ├── Footer/         # Pied de page
+│   ├── Hero/           # Section héro page d'accueil
+│   ├── FeaturesSection/ # Section fonctionnalités
+│   ├── AppHero/        # Héro page application
+│   ├── AppStores/      # Liens téléchargement app
+│   └── AppFeatures/    # Fonctionnalités app
+├── pages/              # Pages principales
+│   ├── Home/           # Page d'accueil
+│   ├── LApplication/   # Page application
+│   ├── LeFestival/     # Page festival
+│   └── LeBlog/         # Page blog
+└── App.js              # Configuration des routes
+```
 
-### `npm run build`
+## 🎨 Design System
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Couleurs principales
+- Jaune accent: `#FFD700`
+- Noir: `#000000`
+- Gris foncé: `#333333`
+- Blanc: `#FFFFFF`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Composants CSS réutilisables
+- `.btn` - Boutons génériques
+- `.btn-primary` - Bouton principal jaune
+- `.yellow-bg` - Fond jaune
+- `.yellow-accent` - Texte jaune
+- `.container` - Conteneur centré
+- `.section` - Espacement vertical
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 📱 Responsive Design
 
-### `npm run eject`
+Le site est entièrement responsive avec des breakpoints à:
+- Mobile: < 768px
+- Desktop: ≥ 768px
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🔧 Technologies utilisées
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- React 18
+- React Router DOM
+- CSS3 (Grid & Flexbox)
+- Mobile-first responsive design
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 📄 Pages disponibles
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Accueil** (`/`) - Page principale avec héro et présentation
+- **L'Application** (`/application`) - Détails sur l'application mobile
+- **Le Festival** (`/festival`) - Informations complètes sur le festival
+- **Le Blog** (`/blog`) - Section blog (en développement)
 
-## Learn More
+## 🚀 Déploiement
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Le projet peut être déployé sur n'importe quelle plateforme supportant les applications React statiques:
+- Netlify
+- Vercel
+- GitHub Pages
+- Heroku
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 👥 Contribution
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Ce projet suit les conventions de code standard React avec:
+- Composants fonctionnels
+- Hooks React
+- Structure modulaire
+- CSS séparé par composant
