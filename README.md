@@ -15,7 +15,7 @@ npm install
 
 ### Développement
 ```bash
-npm start
+npm run start
 ```
 Le site sera accessible sur [http://localhost:3000](http://localhost:3000)
 
@@ -44,27 +44,6 @@ src/
 └── App.js              # Configuration des routes
 ```
 
-## 🎨 Design System
-
-### Couleurs principales
-- Jaune accent: `#FFD700`
-- Noir: `#000000`
-- Gris foncé: `#333333`
-- Blanc: `#FFFFFF`
-
-### Composants CSS réutilisables
-- `.btn` - Boutons génériques
-- `.btn-primary` - Bouton principal jaune
-- `.yellow-bg` - Fond jaune
-- `.yellow-accent` - Texte jaune
-- `.container` - Conteneur centré
-- `.section` - Espacement vertical
-
-## 📱 Responsive Design
-
-Le site est entièrement responsive avec des breakpoints à:
-- Mobile: < 768px
-- Desktop: ≥ 768px
 
 ## 🔧 Technologies utilisées
 
@@ -80,13 +59,6 @@ Le site est entièrement responsive avec des breakpoints à:
 - **Le Festival** (`/festival`) - Informations complètes sur le festival
 - **Le Blog** (`/blog`) - Section blog (en développement)
 
-## 🚀 Déploiement
-
-Le projet peut être déployé sur n'importe quelle plateforme supportant les applications React statiques:
-- Netlify
-- Vercel
-- GitHub Pages
-- Heroku
 
 ## 👥 Contribution
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../../logo.png';
 import './AppHero.css';
 
 const AppHero = () => {
@@ -10,7 +11,7 @@ const AppHero = () => {
             <div className="app-hero-content">
               <div className="app-hero-left">
                 <div className="app-hero-logo">
-                  <div className="logo-f-large">F</div>
+                  <img src={logo} alt="FIIDI Logo" className="logo-hero" />
                 </div>
               </div>
               <div className="app-hero-right">

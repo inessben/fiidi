@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "FIIDI",
+  "name": "FIIDI - Tremplin des Talents du Cinéma",
+  "description": "Application et festival dédiés au cinéma indépendant. Connectez-vous avec des professionnels du cinéma et découvrez de nouveaux talents.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +21,27 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#FFD700",
+  "background_color": "#0F0F23",
+  "categories": ["entertainment", "social", "lifestyle"],
+  "lang": "fr-FR",
+  "dir": "ltr",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "shortcuts": [
+    {
+      "name": "L'Application",
+      "short_name": "App",
+      "description": "Découvrir l'application FIIDI",
+      "url": "/application",
+      "icons": [{ "src": "logo192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Le Festival",
+      "short_name": "Festival",
+      "description": "Informations sur le festival FIIDI",
+      "url": "/festival",
+      "icons": [{ "src": "logo192.png", "sizes": "192x192" }]
+    }
+  ]
 }

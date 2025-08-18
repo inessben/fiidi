@@ -39,6 +39,11 @@
   gap: 20px;
 }
 
+.logo-hero {
+  height: 120px;
+  width: auto;
+}
+
 .app-hero-right {
   display: flex;
   justify-content: center;

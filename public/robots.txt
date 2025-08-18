@@ -1,3 +1,30 @@
-# https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+
+# Pages principales
+Allow: /
+Allow: /application
+Allow: /festival
+Allow: /blog
+
+# Ressources statiques
+Allow: /static/
+Allow: /images/
+Allow: *.css
+Allow: *.js
+Allow: *.png
+Allow: *.jpg
+Allow: *.jpeg
+Allow: *.gif
+Allow: *.svg
+Allow: *.ico
+
+# Sitemap
+Sitemap: https://fiidi.com/sitemap.xml
+
+# Crawl-delay pour éviter la surcharge
+Crawl-delay: 1
+
+# Interdictions (si nécessaire)
+# Disallow: /admin/
+# Disallow: /api/
