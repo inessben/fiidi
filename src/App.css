@@ -218,7 +218,7 @@ p {
 .card:hover {
   transform: translateY(-8px);
   box-shadow: var(--shadow-dark);
-  border-color: rgba(255, 215, 0, 0.3);
+  border-color: var(--primary-gold);
 }
 
 .card:hover::before {

@@ -59,7 +59,6 @@ src/
 - **Le Festival** (`/festival`) - Informations complètes sur le festival
 - **Le Blog** (`/blog`) - Section blog (en développement)
 
-
 ## 👥 Contribution
 
 Ce projet suit les conventions de code standard React avec:

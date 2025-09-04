@@ -42,13 +42,12 @@ const Application = () => {
 
   return (
     <div className="application-page">
-      {/* Hero Section */}
       <section className="app-hero">
         <div className="app-hero-content">
           <div className="app-hero-left">
             <div className={`animate-fade-in-up ${isLoaded ? '' : 'opacity-0'}`}>
               <div className="hero-badge">
-                Réseau social du cinéma
+                Le réseau des industries créatives et culturelles
               </div>
               <h1 className="hero-title">
                 FIIDI APP
@@ -57,7 +56,7 @@ const Application = () => {
                 Le premier réseau social dédié aux métiers de l'audiovisuel et du cinéma
               </h2>
               <p className="hero-description">
-                Créez votre profil professionnel, publiez des annonces, élargissez votre réseau et découvrez de nouvelles opportunités de collaboration dans l'industrie cinématographique.
+                Créez votre profil, publiez des annonces, élargissez votre réseau et découvrez de nouvelles opportunités de collaboration dans l'industrie cinématographique.
               </p>
               <div className="hero-actions">
                 <button onClick={handleDownloadClick} className="btn btn-primary btn-large">
@@ -90,10 +89,10 @@ const Application = () => {
           <div className="hero-stats">
             <div className="hero-stat" style={{ '--index': 0 }}>
               <span className="hero-stat-number" style={{ '--index': 0 }}>1k+</span>
-              <span className="hero-stat-label">Professionnels inscrits</span>
+              <span className="hero-stat-label">Talents inscrits</span>
             </div>
             <div className="hero-stat" style={{ '--index': 1 }}>
-              <span className="hero-stat-number" style={{ '--index': 1 }}>150+</span>
+              <span className="hero-stat-number" style={{ '--index': 1 }}>500+</span>
               <span className="hero-stat-label">Projets réalisés</span>
             </div>
             <div className="hero-stat" style={{ '--index': 2 }}>
@@ -114,7 +113,7 @@ const Application = () => {
                     <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 7C13.9 7 13 7.9 13 9V13H11V9C11 7.9 10.1 7 9 7L3 7V9H9V16C9 17.1 9.9 18 11 18H13C14.1 18 15 17.1 15 16V9H21Z" />
                   </svg>
                 </div>
-                <h3>Profil Professionnel</h3>
+                <h3>Profil Personnel</h3>
               </div>
               <div className="card-content">
                 <p>Créez votre carte de visite numérique complète avec :</p>
@@ -157,7 +156,7 @@ const Application = () => {
                 <h3>Réseau & Collaboration</h3>
               </div>
               <div className="card-content">
-                <p>Connectez-vous avec des professionnels :</p>
+                <p>Connectez-vous avec des passionnés :</p>
                 <ul>
                   <li>Messagerie instantanée</li>
                   <li>Groupes par spécialité</li>
@@ -198,40 +197,40 @@ const Application = () => {
               ×
             </button>
             <h2 className="modal-title">Télécharger FIIDI APP</h2>
-            <p className="modal-subtitle">Choisissez votre plateforme :</p>
+            <p className="modal-subtitle">Rejoignez la communauté des passionnés du cinéma indépendant</p>
 
-            <div className="download-cards">
-              <a
-                href="https://play.google.com/store/apps/details?id=com.mycompany.fiidi&hl=fr&pli=1"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="download-card"
-              >
-                <div className="download-card-icon">
-                  <svg viewBox="0 0 24 24" className="google-play-icon">
-                    <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.92 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
-                  </svg>
-                </div>
-                <div className="download-card-content">
-                  <h3>Google Play Store</h3>
-                  <p>Télécharger pour Android</p>
-                </div>
-              </a>
-
+            <div className="app-modal-store-buttons">
               <a
                 href="https://apps.apple.com/fr/app/fiidi/id6504772951"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="download-card"
+                className="app-modal-store-button app-store"
               >
-                <div className="download-card-icon">
-                  <svg viewBox="0 0 24 24" className="app-store-icon">
-                    <path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.46 12.36,4.26 13,3.5Z" />
+                <div className="app-modal-store-icon-wrapper">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
                   </svg>
                 </div>
-                <div className="download-card-content">
-                  <h3>App Store</h3>
-                  <p>Télécharger pour iOS</p>
+                <div className="app-modal-store-text-wrapper">
+                  <span className="app-modal-store-download-text">Télécharger sur</span>
+                  <span className="app-modal-store-name-text">App Store</span>
+                </div>
+              </a>
+
+              <a
+                href="https://play.google.com/store/apps/details?id=com.mycompany.fiidi&hl=fr&pli=1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="app-modal-store-button google-play"
+              >
+                <div className="app-modal-store-icon-wrapper">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+                  </svg>
+                </div>
+                <div className="app-modal-store-text-wrapper">
+                  <span className="app-modal-store-download-text">Disponible sur</span>
+                  <span className="app-modal-store-name-text">Google Play</span>
                 </div>
               </a>
             </div>

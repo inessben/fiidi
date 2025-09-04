@@ -98,6 +98,92 @@ html {
   font-size: 1.1rem;
 }
 
+/* Nouveaux boutons style page d'accueil */
+.app-modal-store-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.app-modal-store-button {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 1rem 1.5rem;
+  background: var(--dark-card);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  min-width: 180px;
+  backdrop-filter: blur(10px);
+}
+
+.app-modal-store-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.app-modal-store-button:hover::before {
+  left: 100%;
+}
+
+.app-modal-store-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+  border-color: var(--primary-gold);
+  background: rgba(26, 26, 46, 0.9);
+}
+
+.app-modal-store-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(255, 215, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.app-modal-store-button:hover .app-modal-store-icon-wrapper {
+  background: rgba(255, 215, 0, 0.2);
+  transform: scale(1.1);
+}
+
+.app-modal-store-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.app-modal-store-download-text {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  color: var(--text-secondary);
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.app-modal-store-name-text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+/* Anciens styles de boutons - gardés pour compatibilité mais non utilisés */
 .download-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -198,6 +284,30 @@ html {
     font-size: 1.5rem;
   }
 
+  /* Responsive pour les nouveaux boutons */
+  .app-modal-store-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .app-modal-store-button {
+    width: 100%;
+    max-width: 280px;
+    padding: 0.875rem 1.25rem;
+  }
+  
+  .app-modal-store-icon-wrapper {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .app-modal-store-icon-wrapper svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Anciens styles responsive - gardés pour compatibilité */
   .download-cards {
     grid-template-columns: 1fr;
     gap: 1rem;
@@ -306,7 +416,7 @@ html {
 .hero-description {
   font-size: clamp(1rem, 2.5vw, 1.25rem);
   max-width: 700px;
-  margin: 0 auto 3rem;
+  margin: 0 auto;
   line-height: 1.6;
 }
 
@@ -323,6 +433,7 @@ html {
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
+  margin-top: 1rem;
 }
 
 .btn::before {
@@ -625,15 +736,14 @@ html {
   aspect-ratio: 0.75;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 
+  box-shadow:
     0 10px 25px rgba(0, 0, 0, 0.15),
     0 5px 10px rgba(0, 0, 0, 0.1);
   border: 2px solid rgba(255, 215, 0, 0.3);
-  background: linear-gradient(135deg, 
-    rgba(0, 0, 0, 0.95) 0%,
-    rgba(15, 15, 35, 0.98) 50%,
-    rgba(25, 25, 45, 0.95) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(0, 0, 0, 0.95) 0%,
+      rgba(15, 15, 35, 0.98) 50%,
+      rgba(25, 25, 45, 0.95) 100%);
   color: white;
   display: flex;
   flex-direction: column;
@@ -765,8 +875,6 @@ html {
 }
 
 @media (max-width: 768px) {
-
-
   .app-hero {
     min-height: auto;
     padding: 3rem 0;
@@ -812,11 +920,48 @@ html {
 
   .description-grid {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 20px;
   }
 
+  /* Cartes mobile optimisées - plus compactes */
   .description-card {
-    aspect-ratio: 0.65;
+    aspect-ratio: auto;
+    /* Supprime le ratio fixe */
+    min-height: auto;
+    /* Permet une hauteur flexible */
+    border-radius: 15px;
+  }
+
+  .card-header {
+    padding: 1.5rem 1rem 0.75rem;
+  }
+
+  .card-icon-overlay {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .card-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .card-content {
+    padding: 1rem;
+  }
+
+  .card-content p {
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .card-content ul {
+    margin: 0.5rem 0;
+  }
+
+  .card-content li {
+    font-size: 0.8rem;
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
   }
 
   .section-title {

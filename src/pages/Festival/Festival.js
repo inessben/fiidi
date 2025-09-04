@@ -60,7 +60,7 @@ const Festival = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [imagesPerSlide, setImagesPerSlide] = useState(4);
   const totalSlides = Math.ceil(festivalImages.length / imagesPerSlide);
-  
+
   useEffect(() => {
     const updateImagesPerSlide = () => {
       if (window.innerWidth <= 768) {
@@ -71,10 +71,10 @@ const Festival = () => {
         setImagesPerSlide(4);
       }
     };
-    
+
     updateImagesPerSlide();
     window.addEventListener('resize', updateImagesPerSlide);
-    
+
     return () => window.removeEventListener('resize', updateImagesPerSlide);
   }, []);
   useEffect(() => {
@@ -128,7 +128,7 @@ const Festival = () => {
 
                   <p>C'est un lieu de rencontre unique où les professionnels et passionnés du secteur peuvent découvrir, échanger et créer des opportunités autour des œuvres émergentes du cinéma indépendant.</p>
 
-                  <p>Le festival propose projections, rencontres avec les réalisateurs, tables rondes professionnelles et événements de networking dans une ambiance conviviale et inspirante.</p>
+                  <p>Le festival propose projections, rencontres avec les réalisateurs, tables rondes et événements de networking dans une ambiance conviviale et inspirante.</p>
                 </div>
                 <div className="image-placeholder">
                   <img src={flyer} alt="Qu'est-ce que le FIIDI Festival" />
@@ -192,12 +192,12 @@ const Festival = () => {
                     <button className="carousel-btn carousel-btn-prev" onClick={prevSlide}>
                       &#8249;
                     </button>
-                    
+
                     <div className="carousel-track" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
                       {Array.from({ length: totalSlides }, (_, slideIndex) => {
                         const startIndex = slideIndex * imagesPerSlide;
                         const slideImages = festivalImages.slice(startIndex, startIndex + imagesPerSlide);
-                        
+
                         return (
                           <div key={slideIndex} className="carousel-slide multi-image-slide">
                             {slideImages.map((image, imageIndex) => (
@@ -209,12 +209,12 @@ const Festival = () => {
                         );
                       })}
                     </div>
-                    
+
                     <button className="carousel-btn carousel-btn-next" onClick={nextSlide}>
                       &#8250;
                     </button>
                   </div>
-                  
+
                   <div className="carousel-indicators">
                     {Array.from({ length: totalSlides }, (_, index) => (
                       <button
@@ -232,10 +232,10 @@ const Festival = () => {
               <div className="video-testimonials-grid">
                 <div className="video-testimonial-card">
                   <div className="video-container">
-                    <video 
-                      src={feedback1} 
-                      controls 
-                      playsInline 
+                    <video
+                      src={feedback1}
+                      controls
+                      playsInline
                       preload="metadata"
                       className="testimonial-video"
                     >
@@ -246,13 +246,13 @@ const Festival = () => {
                     <p>"Le FIIDI Festival a été un véritable tremplin pour mon film..."</p>
                   </div>
                 </div>
-                
+
                 <div className="video-testimonial-card">
                   <div className="video-container">
-                    <video 
-                      src={feedback2} 
-                      controls 
-                      playsInline 
+                    <video
+                      src={feedback2}
+                      controls
+                      playsInline
                       preload="metadata"
                       className="testimonial-video"
                     >
@@ -263,13 +263,13 @@ const Festival = () => {
                     <p>"L'ambiance unique du festival, mêlant professionnalisme..."</p>
                   </div>
                 </div>
-                
+
                 <div className="video-testimonial-card">
                   <div className="video-container">
-                    <video 
-                      src={feedback3} 
-                      controls 
-                      playsInline 
+                    <video
+                      src={feedback3}
+                      controls
+                      playsInline
                       preload="metadata"
                       className="testimonial-video"
                     >
