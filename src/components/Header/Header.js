@@ -83,6 +83,24 @@ const Header = () => {
                   Contact
                 </Link>
               </li>
+              <li>
+                <Link
+                  to="https://app.fiidi.fr/seConnecter"
+                  className={`nav-link ${isActiveLink('/seconnecter') ? 'active' : ''}`}
+                  onClick={closeMobileMenu}
+                >
+                  Se connecter
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="https://app.fiidi.fr/creerCompte"
+                  className="btn btn-primary create-account-button"
+                  onClick={closeMobileMenu}
+                >
+                  Créer un compte
+                </Link>
+              </li>
             </ul>
           </nav>
 
@@ -133,6 +151,24 @@ const Header = () => {
               onClick={closeMobileMenu}
             >
               Contact
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="https://app.fiidi.fr/seConnecter"
+              className={`mobile-nav-link ${isActiveLink('/contact') ? 'active' : ''}`}
+              onClick={closeMobileMenu}
+            >
+              Se connecter
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="https://app.fiidi.fr/creerCompte"
+              className={`mobile-nav-link ${isActiveLink('/contact') ? 'active' : ''}`}
+              onClick={closeMobileMenu}
+            >
+              Créer un compte
             </Link>
           </li>
         </ul>
