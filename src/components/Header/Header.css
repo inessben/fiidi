@@ -123,6 +123,26 @@
   width: 80%;
 }
 
+/* Login Button */
+.btn-login {
+  background: transparent;
+  color: #FFD700;
+  border: 2px solid #FFD700;
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 1rem;
+}
+
+.btn-login:hover {
+  background: rgba(255, 215, 0, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
 /* Mobile Menu Toggle */
 .mobile-menu-toggle {
   display: none;
@@ -208,6 +228,13 @@
   color: var(--primary-gold);
 }
 
+.mobile-btn-login {
+  width: 100%;
+  margin: 1rem 0 0 0;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+}
+
 /* Responsive Design */
 @media (max-width: 1200px) {
   .nav-wrapper {
@@ -232,6 +259,10 @@
   }
 
   .nav-links {
+    display: none;
+  }
+
+  .nav .btn-login {
     display: none;
   }
 

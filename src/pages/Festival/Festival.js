@@ -35,26 +35,28 @@ import feedback2 from '../../assets/videos/temoignages/feedback2.mp4';
 import feedback3 from '../../assets/videos/temoignages/feedback3.mp4';
 
 const Festival = () => {
+  const [showArchives, setShowArchives] = useState(false);
+
   const festivalImages = [
-    { src: festival1, alt: "FIIDI Festival - Moment 1" },
-    { src: festival2, alt: "FIIDI Festival - Moment 2" },
-    { src: festival3, alt: "FIIDI Festival - Moment 3" },
-    { src: festival4, alt: "FIIDI Festival - Moment 4" },
-    { src: festival5, alt: "FIIDI Festival - Moment 5" },
-    { src: festival6, alt: "FIIDI Festival - Moment 6" },
-    { src: festival7, alt: "FIIDI Festival - Moment 7" },
-    { src: festival8, alt: "FIIDI Festival - Moment 8" },
-    { src: festival9, alt: "FIIDI Festival - Moment 9" },
-    { src: festival10, alt: "FIIDI Festival - Moment 10" },
-    { src: festival11, alt: "FIIDI Festival - Moment 11" },
-    { src: festival12, alt: "FIIDI Festival - Moment 12" },
-    { src: festival13, alt: "FIIDI Festival - Moment 13" },
-    { src: festival14, alt: "FIIDI Festival - Moment 14" },
-    { src: festival15, alt: "FIIDI Festival - Moment 15" },
-    { src: festival16, alt: "FIIDI Festival - Moment 16" },
-    { src: festival17, alt: "FIIDI Festival - Moment 17" },
-    { src: festival18, alt: "FIIDI Festival - Moment 18" },
-    { src: festival19, alt: "FIIDI Festival - Moment 19" }
+    { src: festival1, alt: "FIIDI Festival 2 - Moment 1" },
+    { src: festival2, alt: "FIIDI Festival 2 - Moment 2" },
+    { src: festival3, alt: "FIIDI Festival 2 - Moment 3" },
+    { src: festival4, alt: "FIIDI Festival 2 - Moment 4" },
+    { src: festival5, alt: "FIIDI Festival 2 - Moment 5" },
+    { src: festival6, alt: "FIIDI Festival 2 - Moment 6" },
+    { src: festival7, alt: "FIIDI Festival 2 - Moment 7" },
+    { src: festival8, alt: "FIIDI Festival 2 - Moment 8" },
+    { src: festival9, alt: "FIIDI Festival 2 - Moment 9" },
+    { src: festival10, alt: "FIIDI Festival 2 - Moment 10" },
+    { src: festival11, alt: "FIIDI Festival 2 - Moment 11" },
+    { src: festival12, alt: "FIIDI Festival 2 - Moment 12" },
+    { src: festival13, alt: "FIIDI Festival 2 - Moment 13" },
+    { src: festival14, alt: "FIIDI Festival 2 - Moment 14" },
+    { src: festival15, alt: "FIIDI Festival 2 - Moment 15" },
+    { src: festival16, alt: "FIIDI Festival 2 - Moment 16" },
+    { src: festival17, alt: "FIIDI Festival 2 - Moment 17" },
+    { src: festival18, alt: "FIIDI Festival 2 - Moment 18" },
+    { src: festival19, alt: "FIIDI Festival 2 - Moment 19" }
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -103,16 +105,53 @@ const Festival = () => {
         <div className="hero-container">
           <div className="hero-content">
             <h1 className="hero-title">
+              <span className="festival-edition">ÉDITION 3</span>
               <span className="festival-name">FIIDI FESTIVAL</span>
-              <span className="festival-subtitle">Le cinéma indépendant à l'honneur</span>
+              <span className="festival-subtitle">Appel à films en cours</span>
             </h1>
             <p className="hero-description">
-              Découvrez, échangez et créez lors du rendez-vous incontournable du cinéma indépendant marseillais.
+              Le festival qui célèbre les talents émergents et le cinéma indépendant vous attend.
             </p>
             <div className="hero-buttons">
-              <button className="btn-hero btn-primary">Découvrir</button>
-              <button className="btn-hero btn-secondary">Programme</button>
+              <a href="https://www.filmfestplatform.com/fr/festival/5150" target="_blank" rel="noopener noreferrer" className="btn-hero btn-primary">Soumettre un film</a>
+              <button className="btn-hero btn-secondary" onClick={() => document.getElementById('call-for-films').scrollIntoView({ behavior: 'smooth' })}>En savoir plus</button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Call for Films Section */}
+      <section className="call-for-films-section" id="call-for-films">
+        <div className="container">
+          <div className="call-for-films-content">
+            <div className="call-for-films-badge">APPEL À FILMS</div>
+            <h2 className="call-for-films-title">Vous avez un film à défendre ?</h2>
+            <p className="call-for-films-description">
+              FIIDI met en lumière celles et ceux qui créent en dehors des circuits traditionnels et qui osent raconter autrement.
+            </p>
+            
+            <div className="submission-conditions">
+              <h3>Conditions de participation</h3>
+              <ul className="conditions-list">
+                <li><span className="condition-icon">🎬</span> Court-métrage de fiction</li>
+                <li><span className="condition-icon">⏱️</span> Durée maximale : 25 minutes</li>
+                <li><span className="condition-icon">🎥</span> Production indépendante / petit budget</li>
+              </ul>
+            </div>
+
+            <div className="deadline-box">
+              <span className="deadline-label">Date limite d'envoi</span>
+              <span className="deadline-date">20 Février 2026</span>
+            </div>
+
+            <a 
+              href="https://www.filmfestplatform.com/fr/festival/5150" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="btn-submit-film"
+            >
+              Soumettre votre film
+            </a>
           </div>
         </div>
       </section>
@@ -168,24 +207,31 @@ const Festival = () => {
                 </div>
               </div>
 
-              <h2 className="yellow-bg section-title">Édition précédente</h2>
+              {/* Archives Section */}
+              <div className="archives-section">
+                <h2 className="yellow-bg section-title archives-title" onClick={() => setShowArchives(!showArchives)}>
+                  Archives - FIIDI Festival 2 
+                  <span className={`archives-toggle ${showArchives ? 'open' : ''}`}>▼</span>
+                </h2>
+                
+                {showArchives && (
+                  <div className="archives-content">
+                    <div className="content-block reverse">
+                      <div className="image-placeholder">
+                        <img src={flyer} alt="FIIDI Festival 2" />
+                      </div>
+                      <div className="text-content">
+                        <h3>FIIDI Festival 2 - 2024</h3>
+                        <p>La deuxième édition du FIIDI Festival a réuni plus de 5000 participants, 120 films projetés, et 50 réalisateurs invités pour des rencontres et débats passionnants.</p>
 
-              <div className="content-block reverse">
-                <div className="image-placeholder">
-                  <img src={flyer} alt="FIIDI Festival 2024" />
-                </div>
-                <div className="text-content">
-                  <h3>FIIDI Festival 2024</h3>
-                  <p>La dernière édition du FIIDI Festival a réuni plus de 5000 participants, 120 films projetés, et 50 réalisateurs invités pour des rencontres et débats passionnants.</p>
+                        <p>L'événement a permis la signature de nombreux contrats et collaborations, confirmant le rôle essentiel du festival comme catalyseur de projets pour le cinéma indépendant.</p>
 
-                  <p>L'événement a permis la signature de nombreux contrats et collaborations, confirmant le rôle essentiel du festival comme catalyseur de projets pour le cinéma indépendant.</p>
+                        <p>Le prix du meilleur film a été décerné à "Lumières Urbaines" de Marie Laurent, une œuvre poétique sur la vie nocturne marseillaise.</p>
+                      </div>
+                    </div>
 
-                  <p>Le prix du meilleur film a été décerné à "Lumières Urbaines" de Marie Laurent, une œuvre poétique sur la vie nocturne marseillaise.</p>
-                </div>
-              </div>
-
-              <div className="festival-images-section">
-                <h2 className="yellow-bg section-title">Retour en image sur le FIIDI FESTIVAL</h2>
+                    <div className="festival-images-section">
+                      <h3 className="archive-subtitle">Retour en images sur le FIIDI Festival 2</h3>
 
                 <div className="carousel-container">
                   <div className="carousel">
@@ -227,7 +273,7 @@ const Festival = () => {
                 </div>
               </div>
 
-              <h2 className="yellow-bg section-title">Témoignages Vidéo</h2>
+              <h3 className="archive-subtitle">Témoignages Vidéo - Festival 2</h3>
 
               <div className="video-testimonials-grid">
                 <div className="video-testimonial-card">
@@ -280,6 +326,9 @@ const Festival = () => {
                     <p>"J'ai pu rencontrer des réalisateurs passionnants..."</p>
                   </div>
                 </div>
+              </div>
+                  </div>
+                )}
               </div>
 
               <h2 className="yellow-bg section-title">Partenaires</h2>

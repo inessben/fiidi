@@ -84,6 +84,7 @@ const Header = () => {
                 </Link>
               </li>
             </ul>
+            <button className="btn-login">Se connecter</button>
           </nav>
 
           <button
@@ -134,6 +135,11 @@ const Header = () => {
             >
               Contact
             </Link>
+          </li>
+          <li>
+            <button className="btn-login mobile-btn-login" onClick={closeMobileMenu}>
+              Se connecter
+            </button>
           </li>
         </ul>
       </div>
