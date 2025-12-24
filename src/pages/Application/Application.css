@@ -36,15 +36,21 @@ html {
 }
 
 .download-modal-content {
-  background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-card) 100%);
+  background: var(--bg-card);
   border-radius: 20px;
   padding: 3rem;
   max-width: 600px;
   width: 100%;
   position: relative;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-dark);
+  animation: slideInUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+body.dark-mode .download-modal-content {
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
   border: 1px solid rgba(255, 215, 0, 0.2);
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-  animation: slideInUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 @keyframes slideInUp {
@@ -66,7 +72,7 @@ html {
   background: none;
   border: none;
   font-size: 2rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-muted);
   cursor: pointer;
   transition: all 0.3s ease;
   width: 40px;
@@ -75,6 +81,10 @@ html {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+}
+
+body.dark-mode .modal-close {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .modal-close:hover {
@@ -195,14 +205,19 @@ html {
   align-items: center;
   gap: 1rem;
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid rgba(255, 215, 0, 0.2);
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
   border-radius: 15px;
   text-decoration: none;
   color: var(--text-primary);
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
   overflow: hidden;
+}
+
+body.dark-mode .download-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 215, 0, 0.2);
 }
 
 .download-card::before {
@@ -336,6 +351,10 @@ html {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background: var(--bg-secondary);
+}
+
+body.dark-mode .app-hero {
   background: linear-gradient(135deg,
       rgba(255, 215, 0, 0.1) 0%,
       rgba(255, 215, 0, 0.05) 25%,
@@ -364,21 +383,28 @@ html {
   width: 100%;
 }
 
-.hero-badge {
+.application-page .hero-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  background: rgba(255, 215, 0, 0.15);
-  border: 1px solid rgba(255, 215, 0, 0.4);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 50px;
-  color: var(--primary-gold);
+  color: var(--text-primary);
   font-size: 0.9rem;
   font-weight: 600;
   margin-bottom: 2rem;
+  box-shadow: var(--shadow-light);
+  animation: float 3s ease-in-out infinite;
+}
+
+body.dark-mode .application-page .hero-badge {
+  background: rgba(255, 215, 0, 0.15);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  color: var(--primary-gold);
   backdrop-filter: blur(15px);
   box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
-  animation: float 3s ease-in-out infinite;
 }
 
 @keyframes float {
@@ -393,11 +419,15 @@ html {
   }
 }
 
-.hero-title {
+.application-page .hero-title {
   font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 900;
   line-height: 0.9;
   margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+body.dark-mode .application-page .hero-title {
   background: linear-gradient(135deg,
       var(--primary-gold) 0%,
       #FFC107 50%,
@@ -467,14 +497,19 @@ html {
   text-align: center;
   padding: 1rem;
   border-radius: 15px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 215, 0, 0.2);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   transition: all 0.3s ease;
   animation: slideInUp 0.8s ease forwards;
   animation-delay: calc(var(--index) * 0.1s);
   opacity: 0;
   transform: translateY(30px);
+}
+
+body.dark-mode .hero-stat {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 215, 0, 0.2);
 }
 
 .hero-stat:hover {
@@ -497,9 +532,12 @@ html {
   font-weight: 900;
   color: var(--primary-gold);
   line-height: 1;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   animation: countUp 2s ease-out forwards;
   animation-delay: calc(var(--index) * 0.2s);
+}
+
+body.dark-mode .hero-stat-number {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 @keyframes countUp {
@@ -516,9 +554,13 @@ html {
 
 .hero-stat-label {
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-secondary);
   font-weight: 500;
   margin-top: 0.5rem;
+}
+
+body.dark-mode .hero-stat-label {
+  color: rgba(255, 255, 255, 0.8);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
@@ -706,7 +748,11 @@ html {
 
 .app-description {
   padding: 80px 0;
-  background-color: rgba(40, 40, 40, 0.9);
+  background: var(--bg-secondary);
+}
+
+body.dark-mode .app-description {
+  background: rgba(40, 40, 40, 0.9);
 }
 
 .section-title {
@@ -736,10 +782,17 @@ html {
   aspect-ratio: 0.75;
   border-radius: 20px;
   overflow: hidden;
+  box-shadow: var(--shadow-medium);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  background: var(--bg-card);
+  display: flex;
+  flex-direction: column;
+}
+
+body.dark-mode .description-card {
   box-shadow:
     0 10px 25px rgba(0, 0, 0, 0.15),
     0 5px 10px rgba(0, 0, 0, 0.1);
-  border: 2px solid rgba(255, 215, 0, 0.3);
   background: linear-gradient(135deg,
       rgba(0, 0, 0, 0.95) 0%,
       rgba(15, 15, 35, 0.98) 50%,
@@ -787,10 +840,13 @@ html {
   color: var(--primary-gold);
   margin: 0;
   font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+body.dark-mode .card-header h3 {
   text-shadow:
     0 2px 4px rgba(0, 0, 0, 0.8),
     0 0 10px rgba(255, 215, 0, 0.3);
-  letter-spacing: 0.3px;
 }
 
 .card-content {
@@ -816,9 +872,13 @@ html {
 .card-content p {
   margin-bottom: 1rem;
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-secondary);
   font-size: 0.9rem;
   font-weight: 400;
+}
+
+body.dark-mode .card-content p {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .card-content ul {
@@ -830,10 +890,14 @@ html {
 .card-content li {
   margin-bottom: 0.6rem;
   padding-left: 1.2rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-secondary);
   font-size: 0.85rem;
   line-height: 1.4;
   position: relative;
+}
+
+body.dark-mode .card-content li {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .card-content li::before {

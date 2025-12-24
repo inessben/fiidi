@@ -1,10 +1,15 @@
 .footer {
-  background: rgba(26, 26, 46, 0.8);
-  backdrop-filter: blur(20px);
-  border-top: 1px solid rgba(255, 215, 0, 0.1);
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
   padding: 4rem 0 2rem;
   margin-top: auto;
   position: relative;
+}
+
+body.dark-mode .footer {
+  background: rgba(26, 26, 46, 0.8);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 215, 0, 0.1);
 }
 
 .footer::before {
@@ -28,11 +33,15 @@
 }
 
 .footer-section h3 {
-  color: var(--primary-gold);
+  color: var(--text-primary);
   font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
   position: relative;
+}
+
+body.dark-mode .footer-section h3 {
+  color: var(--primary-gold);
 }
 
 .footer-section h3::after {
@@ -59,11 +68,15 @@
   text-decoration: none;
   font-size: 1.5rem;
   font-weight: 900;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+body.dark-mode .footer-logo {
   background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: 1rem;
 }
 
 .footer-logo img {
@@ -96,14 +109,19 @@
   justify-content: center;
   width: 45px;
   height: 45px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--bg-tertiary);
   border-radius: 12px;
   text-decoration: none;
   color: var(--text-secondary);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-color);
   position: relative;
   overflow: hidden;
+}
+
+body.dark-mode .social-link {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .social-link svg {
@@ -197,12 +215,16 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
+}
+
+body.dark-mode .footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-copyright {

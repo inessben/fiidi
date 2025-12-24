@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { ThemeProvider } from './context/ThemeContext';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
@@ -26,26 +27,28 @@ function ScrollToTop() {
 
 function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <div className="App">
-        <Header />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/application" element={<Application />} />
-            <Route path="/festival" element={<Festival />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/legal/cookies" element={<CookiePolicy />} />
-            <Route path="/legal/privacy" element={<PrivacyPolicy />} />
-            <Route path="/legal/terms" element={<Terms />} />
-            <Route path="/legal/mentions" element={<Mentions />} />
-            <Route path="/legal/sitemap" element={<Sitemap />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <ScrollToTop />
+        <div className="App">
+          <Header />
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/application" element={<Application />} />
+              <Route path="/festival" element={<Festival />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/legal/cookies" element={<CookiePolicy />} />
+              <Route path="/legal/privacy" element={<PrivacyPolicy />} />
+              <Route path="/legal/terms" element={<Terms />} />
+              <Route path="/legal/mentions" element={<Mentions />} />
+              <Route path="/legal/sitemap" element={<Sitemap />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 }
 

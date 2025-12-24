@@ -1,19 +1,58 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
+import heroBackground from '../../assets/images/homepage/hero.jpg';
 
 const Home = () => {
+  const observerRef = useRef(null);
+
+  useEffect(() => {
+    // Intersection Observer for scroll animations
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    const animatedElements = document.querySelectorAll('[data-animate]');
+    animatedElements.forEach((el) => observerRef.current.observe(el));
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, []);
+
   return (
     <div className="home">
+      {/* Hero Section */}
       <section className="hero-wrapper">
-        <div className="hero-float-element hero-float-1"></div>
-        <div className="hero-float-element hero-float-2"></div>
-        <div className="hero-float-element hero-float-3"></div>
+        <div className="hero-background" style={{ backgroundImage: `url(${heroBackground})` }}></div>
+
+        {/* Animated background elements */}
+        <div className="hero-particles">
+          <div className="particle particle-1"></div>
+          <div className="particle particle-2"></div>
+          <div className="particle particle-3"></div>
+          <div className="particle particle-4"></div>
+          <div className="particle particle-5"></div>
+        </div>
+
+        <div className="hero-gradient-orb hero-orb-1"></div>
+        <div className="hero-gradient-orb hero-orb-2"></div>
 
         <div className="hero-container">
-          <div className="hero-download-section">
-            <div className="hero-download-badge">
-              📱 Disponible maintenant
+          {/* Download Section - Left */}
+          <div className="hero-download-section animate-fade-in-left">
+            <div className="hero-download-badge animate-pulse">
+              <span className="badge-dot"></span>
+              Disponible maintenant
             </div>
             <h3 className="hero-download-title">Téléchargez l'app FIIDI</h3>
             <p className="hero-download-description">
@@ -57,27 +96,28 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="hero-content">
-            <div className="hero-badge">
-              Le réseau des industries créatives et culturelles
-            </div>
+          {/* Main Content - Right */}
+          <div className="hero-content animate-fade-in-right">
 
-            <h1 className="hero-title">
+            <h1 className="hero-title gradient-text-animated">
               FIIDI
             </h1>
 
             <h2 className="hero-subtitle">
-              Connecter, valoriser et faire avancer
+              Le réseau social qui révolutionne l'industrie créative
             </h2>
 
             <p className="hero-description">
-              Une plateforme innovante qui réunit application et festival pour connecter
-              les passionnés du cinéma indépendant et créer de nouvelles opportunités.
+              Une plateforme innovante qui connecte les talents du cinéma indépendant.
+              Collaborez, créez, et transformez vos projets en réalité.
             </p>
 
             <div className="hero-actions">
-              <Link to="/application" className="btn btn-primary btn-large">
-                Découvrir l'app
+              <Link to="/application" className="btn btn-primary btn-large btn-magnetic">
+                <span>Découvrir l'app</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
               </Link>
               <Link to="/festival" className="btn btn-secondary btn-large">
                 Le festival
@@ -95,72 +135,113 @@ const Home = () => {
               </div>
               <div className="hero-stat">
                 <span className="hero-stat-number">50+</span>
-                <span className="hero-stat-label">Métiers représentés</span>
+                <span className="hero-stat-label">Métiers</span>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Scroll indicator */}
+        <div className="scroll-indicator">
+          <div className="scroll-mouse">
+            <div className="scroll-wheel"></div>
+          </div>
+          <span>Découvrir</span>
+        </div>
       </section>
 
       {/* What is FIIDI Section */}
-      <section className="section">
+      <section className="section what-is-fiidi">
         <div className="container">
-          <div className="text-center">
-            <h2>Qu'est-ce que FIIDI ?</h2>
-            <p>
+          <div className="section-header" data-animate>
+            <span className="section-badge">À propos</span>
+            <h2 className="section-title-large">
+              Qu'est-ce que <span className="gradient-text-animated">FIIDI</span> ?
+            </h2>
+            <p className="section-description">
               FIIDI réunit une application et un festival autour d'une mission commune :
-              connecter les talents du cinéma indépendant et créer des opportunités de collaboration. Echanger, travailler, réseauter, faire des rencontres et innover ensemble pour faire avancer l'industrie cinématographique.
+              connecter les talents du cinéma indépendant et créer des opportunités de collaboration.
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', marginTop: '4rem' }}>
-            <div className="card">
-              <h3 className="gradient-text">L'Application</h3>
-              <p>
-                Une plateforme sociale dédiée aux talents du cinéma pour se rendre visibles,
-                collaborer et développer leur réseau.
-              </p>
-              <Link to="/application" className="btn btn-primary" style={{ marginTop: '1.5rem' }}>
-                En savoir plus
-              </Link>
+          <div className="feature-cards">
+            <div className="feature-card" data-animate>
+              <div className="feature-card-icon">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+                  <line x1="12" y1="18" x2="12.01" y2="18" />
+                </svg>
+              </div>
+              <div className="feature-card-content">
+                <h3>L'Application</h3>
+                <p>
+                  Une plateforme sociale dédiée aux talents du cinéma pour se rendre visibles,
+                  collaborer et développer leur réseau professionnel.
+                </p>
+                <Link to="/application" className="feature-link">
+                  En savoir plus
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
+              <div className="feature-card-glow"></div>
             </div>
 
-            <div className="card">
-              <h3 className="gradient-text">Le Festival</h3>
-              <p>
-                Un événement annuel à Marseille qui met en lumière les nouvelles voix du cinéma
-                dans un esprit ouvert, festif et accessible à tous.
-              </p>
-              <Link to="/festival" className="btn btn-primary" style={{ marginTop: '1.5rem' }}>
-                Découvrir
-              </Link>
+            <div className="feature-card" data-animate>
+              <div className="feature-card-icon">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <polygon points="23 7 16 12 23 17 23 7" />
+                  <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                </svg>
+              </div>
+              <div className="feature-card-content">
+                <h3>Le Festival</h3>
+                <p>
+                  Un événement annuel à Marseille qui met en lumière les nouvelles voix du cinéma
+                  dans un esprit ouvert, festif et accessible à tous.
+                </p>
+                <Link to="/festival" className="feature-link">
+                  Découvrir
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
+              <div className="feature-card-glow"></div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Values Section */}
-      <section className="section section-light">
+      <section className="section values-section">
         <div className="container">
-          <div className="text-center">
-            <h2>Nos Valeurs</h2>
-            <p>
+          <div className="section-header" data-animate>
+            <span className="section-badge">Notre ADN</span>
+            <h2 className="section-title-large">
+              Nos <span className="gradient-text-animated">Valeurs</span>
+            </h2>
+            <p className="section-description">
               FIIDI est porté par des valeurs fortes qui guident chacune de nos actions
-              et décisions pour créer un écosystème inclusif et dynamique.
+              pour créer un écosystème inclusif et dynamique.
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem', marginTop: '4rem' }}>
+          <div className="values-grid">
             {[
-              { icon: '💡', title: 'Créativité', desc: 'Encourager l\'innovation et l\'originalité dans chaque projet' },
-              { icon: '🤝', title: 'Collaboration', desc: 'Favoriser les échanges et le travail d\'équipe' },
-              { icon: '🌍', title: 'Inclusivité', desc: 'Ouvrir le cinéma à toutes les voix et tous les talents' },
-              { icon: '🚀', title: 'Innovation', desc: 'Repenser l\'industrie avec les outils de demain' }
+              { icon: '💡', title: 'Créativité', desc: 'Encourager l\'innovation et l\'originalité dans chaque projet', color: '#FFD700' },
+              { icon: '🤝', title: 'Collaboration', desc: 'Favoriser les échanges et le travail d\'équipe', color: '#FFB800' },
+              { icon: '🌍', title: 'Inclusivité', desc: 'Ouvrir le cinéma à toutes les voix et tous les talents', color: '#FFA500' },
+              { icon: '🚀', title: 'Innovation', desc: 'Repenser l\'industrie avec les outils de demain', color: '#FF8C00' }
             ].map((value, index) => (
-              <div key={index} className="card" style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>{value.icon}</div>
-                <h3>{value.title}</h3>
-                <p style={{ fontSize: '0.95rem' }}>{value.desc}</p>
+              <div key={index} className="value-card hover-lift" data-animate style={{ '--delay': `${index * 0.1}s` }}>
+                <div className="value-icon-wrapper">
+                  <span className="value-icon">{value.icon}</span>
+                </div>
+                <h3 className="value-title">{value.title}</h3>
+                <p className="value-desc">{value.desc}</p>
+                <div className="value-card-border" style={{ '--accent-color': value.color }}></div>
               </div>
             ))}
           </div>
@@ -168,52 +249,86 @@ const Home = () => {
       </section>
 
       {/* Professions Section */}
-      <section className="section">
+      <section className="section professions-section">
         <div className="container">
-          <div className="text-center">
-            <h2>Tous les métiers du cinéma</h2>
-            <p>
+          <div className="section-header" data-animate>
+            <span className="section-badge">Écosystème</span>
+            <h2 className="section-title-large">
+              Tous les <span className="gradient-text-animated">métiers</span> du cinéma
+            </h2>
+            <p className="section-description">
               FIIDI rassemble tous les talents de l'industrie cinématographique
               pour créer un écosystème complet et collaboratif.
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem', marginTop: '4rem' }}>
+          <div className="professions-marquee" data-animate>
+            <div className="marquee-track">
+              {[
+                'Réalisateurs', 'Acteurs', 'Producteurs', 'Scénaristes',
+                'Directeurs Photo', 'Monteurs', 'Ingénieurs Son', 'Compositeurs',
+                'Costumiers', 'Maquilleurs', 'Assistants Réalisation', 'Techniciens'
+              ].map((job, index) => (
+                <div key={index} className="profession-tag">
+                  <span className="profession-dot"></span>
+                  {job}
+                </div>
+              ))}
+              {/* Duplicate for seamless loop */}
+              {[
+                'Réalisateurs', 'Acteurs', 'Producteurs', 'Scénaristes',
+                'Directeurs Photo', 'Monteurs', 'Ingénieurs Son', 'Compositeurs'
+              ].map((job, index) => (
+                <div key={`dup-${index}`} className="profession-tag">
+                  <span className="profession-dot"></span>
+                  {job}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="professions-grid" data-animate>
             {[
-              'Réalisateurs & Réalisatrices',
-              'Acteurs & Actrices',
-              'Producteurs & Productrices',
-              'Scénaristes',
-              'Directeurs Photo',
-              'Monteurs & Monteuses',
-              'Ingénieurs du Son',
-              'Compositeurs',
-              'Costumiers & Costumières',
-              'Maquilleurs & Maquilleuses',
-              'Assistants Réalisation',
-              'Techniciens & Techniciennes'
-            ].map((job, index) => (
-              <div key={index} className="glass" style={{ padding: '1.5rem', textAlign: 'center', borderRadius: 'var(--border-radius)' }}>
-                <h4 style={{ color: 'var(--primary-gold)', fontSize: '1rem', margin: 0 }}>{job}</h4>
+              { title: 'Création', jobs: ['Réalisateurs', 'Scénaristes', 'Directeurs artistiques'] },
+              { title: 'Production', jobs: ['Producteurs', 'Assistants', 'Régisseurs'] },
+              { title: 'Technique', jobs: ['Directeurs Photo', 'Cadreurs', 'Électriciens'] },
+              { title: 'Post-production', jobs: ['Monteurs', 'Étalonneurs', 'VFX Artists'] }
+            ].map((category, index) => (
+              <div key={index} className="profession-category">
+                <h4 className="category-title">{category.title}</h4>
+                <ul className="category-jobs">
+                  {category.jobs.map((job, jobIndex) => (
+                    <li key={jobIndex}>{job}</li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-
       {/* CTA Section */}
-      <section className="section">
+      <section className="section cta-section">
         <div className="container">
-          <div className="text-center">
-            <h2>Rejoignez la communauté</h2>
-            <p>
+          <div className="cta-content" data-animate>
+            <div className="cta-background">
+              <div className="cta-orb cta-orb-1"></div>
+              <div className="cta-orb cta-orb-2"></div>
+            </div>
+            <span className="cta-badge">Prêt à commencer ?</span>
+            <h2 className="cta-title">
+              Rejoignez la <span className="gradient-text-animated">révolution</span>
+            </h2>
+            <p className="cta-description">
               Que vous soyez professionnel confirmé ou talent émergent,
               FIIDI vous accompagne dans votre parcours cinématographique.
             </p>
-            <div style={{ marginTop: '2rem' }}>
-              <Link to="/application" className="btn btn-primary btn-large">
-                En savoir plus
+            <div className="cta-actions">
+              <Link to="/application" className="btn btn-primary btn-large btn-magnetic animate-glow">
+                Télécharger l'app
+              </Link>
+              <Link to="/contact" className="btn btn-secondary btn-large">
+                Nous contacter
               </Link>
             </div>
           </div>

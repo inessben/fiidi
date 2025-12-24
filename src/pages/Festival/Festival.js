@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Festival.css';
 
 import festival1 from '../../assets/images/festival/207A9731.jpg';
@@ -21,7 +21,8 @@ import festival17 from '../../assets/images/festival/_07A9803.jpg';
 import festival18 from '../../assets/images/festival/_07A9811.jpg';
 import festival19 from '../../assets/images/festival/_07A9814.jpg';
 import heroBackground from '../../assets/images/festival/_07A9798.jpg';
-import flyer from '../../assets/images/festival/flyer.png';
+import flyer2 from '../../assets/images/festival/fiidifestival2.png';
+import flyer3 from '../../assets/images/festival/fiidifestival3.png';
 
 import partner2 from '../../assets/images/partenaires/2.png';
 import partner3 from '../../assets/images/partenaires/3.png';
@@ -36,6 +37,30 @@ import feedback3 from '../../assets/videos/temoignages/feedback3.mp4';
 
 const Festival = () => {
   const [showArchives, setShowArchives] = useState(false);
+  const observerRef = useRef(null);
+
+  // Scroll animations
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    const animatedElements = document.querySelectorAll('[data-animate]');
+    animatedElements.forEach((el) => observerRef.current.observe(el));
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, []);
 
   const festivalImages = [
     { src: festival1, alt: "FIIDI Festival 2 - Moment 1" },
@@ -100,21 +125,85 @@ const Festival = () => {
 
   return (
     <div className="festival-page">
+      {/* Hero Section */}
       <section className="festival-hero" style={{ backgroundImage: `url(${heroBackground})` }}>
         <div className="hero-overlay"></div>
+
+        {/* Animated elements */}
+        <div className="hero-particles">
+          <div className="hero-particle hero-particle-1"></div>
+          <div className="hero-particle hero-particle-2"></div>
+          <div className="hero-particle hero-particle-3"></div>
+        </div>
+
         <div className="hero-container">
           <div className="hero-content">
-            <h1 className="hero-title">
-              <span className="festival-edition">ÉDITION 3</span>
-              <span className="festival-name">FIIDI FESTIVAL</span>
-              <span className="festival-subtitle">Appel à films en cours</span>
+
+            <h1 className="hero-title animate-fade-in-up">
+              <span className="festival-name gradient-text-animated">FIIDI FESTIVAL</span>
             </h1>
-            <p className="hero-description">
-              Le festival qui célèbre les talents émergents et le cinéma indépendant vous attend.
+
+            <p className="hero-tagline animate-fade-in-up stagger-2">
+              Le festival qui révolutionne le cinéma indépendant
             </p>
-            <div className="hero-buttons">
-              <a href="https://www.filmfestplatform.com/fr/festival/5150" target="_blank" rel="noopener noreferrer" className="btn-hero btn-primary">Soumettre un film</a>
-              <button className="btn-hero btn-secondary" onClick={() => document.getElementById('call-for-films').scrollIntoView({ behavior: 'smooth' })}>En savoir plus</button>
+
+            <p className="hero-description animate-fade-in-up stagger-3">
+              Rejoignez-nous pour célébrer les talents émergents et découvrir les nouvelles voix du cinéma.
+            </p>
+
+            <div className="hero-buttons animate-fade-in-up stagger-4">
+              <a href="https://www.filmfestplatform.com/fr/festival/5150" target="_blank" rel="noopener noreferrer" className="btn-hero btn-primary btn-magnetic">
+                <span>Soumettre un film</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+              <button className="btn-hero btn-secondary" onClick={() => document.getElementById('call-for-films').scrollIntoView({ behavior: 'smooth' })}>
+                En savoir plus
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="scroll-indicator">
+          <div className="scroll-line"></div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="stats-section">
+        <div className="container">
+          <div className="stats-header" data-animate>
+            <h2 className="stats-main-title">
+              <span className="gradient-text-animated">FIIDI</span> en quelques chiffres
+            </h2>
+
+          </div>
+          <div className="stats-grid">
+            <div className="stat-card hover-lift" data-animate style={{ '--delay': '0.1s' }}>
+              <div className="stat-icon-wrapper">
+                <span className="stat-icon">🎬</span>
+              </div>
+              <span className="stat-number counter">+400</span>
+              <span className="stat-label">Films reçus</span>
+              <div className="stat-card-glow"></div>
+            </div>
+            <div className="stat-card hover-lift" data-animate style={{ '--delay': '0.2s' }}>
+              <div className="stat-icon-wrapper">
+                <span className="stat-icon">🌍</span>
+              </div>
+              <span className="stat-number counter">17</span>
+              <span className="stat-label">Pays</span>
+              <div className="stat-card-glow"></div>
+            </div>
+            <div className="stat-card hover-lift" data-animate style={{ '--delay': '0.3s' }}>
+              <div className="stat-icon-wrapper">
+                <span className="stat-icon">🤝</span>
+              </div>
+              <span className="stat-number counter">+250</span>
+              <span className="stat-label">Partenaires</span>
+              <div className="stat-card-glow"></div>
             </div>
           </div>
         </div>
@@ -124,12 +213,13 @@ const Festival = () => {
       <section className="call-for-films-section" id="call-for-films">
         <div className="container">
           <div className="call-for-films-content">
-            <div className="call-for-films-badge">APPEL À FILMS</div>
             <h2 className="call-for-films-title">Vous avez un film à défendre ?</h2>
             <p className="call-for-films-description">
               FIIDI met en lumière celles et ceux qui créent en dehors des circuits traditionnels et qui osent raconter autrement.
+              <br></br>Date limite d'envoi
+              <span className="deadline-date"> 20 Février 2026</span>
             </p>
-            
+
             <div className="submission-conditions">
               <h3>Conditions de participation</h3>
               <ul className="conditions-list">
@@ -139,19 +229,40 @@ const Festival = () => {
               </ul>
             </div>
 
-            <div className="deadline-box">
-              <span className="deadline-label">Date limite d'envoi</span>
-              <span className="deadline-date">20 Février 2026</span>
-            </div>
 
-            <a 
-              href="https://www.filmfestplatform.com/fr/festival/5150" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://www.filmfestplatform.com/fr/festival/5150"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-submit-film"
             >
               Soumettre votre film
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Objectif Section */}
+      <section className="objectif-section">
+        <div className="container">
+          <div className="objectif-content">
+            <h2 className="objectif-title">
+              L'OBJECTIF DU <span className="objectif-highlight">FIIDI FESTIVAL</span> ?
+            </h2>
+            <div className="objectif-text">
+              <p>
+                L'objectif du FIIDI Festival est de promouvoir et de <strong>valoriser la création cinématographique à petits budgets</strong> en offrant une véritable plateforme de diffusion, de formation et de mise en réseau aux talents émergents.
+              </p>
+              <p>
+                Le festival s'attache à démocratiser l'accès aux métiers du cinéma en permettant aux jeunes, aux autodidactes et aux <strong>publics éloignés de la culture</strong> de présenter leurs œuvres, de développer leurs compétences et d'intégrer un écosystème professionnel qui leur est souvent inaccessible.
+              </p>
+              <p>
+                <strong>FIIDI encourage l'innovation, soutient l'audace artistique</strong> et met en lumière des projets réalisés avec des moyens limités mais une inventivité remarquable.
+              </p>
+              <p>
+                Par son approche inclusive et ouverte, le festival ambitionne de devenir un tremplin essentiel pour les créateurs de demain et un espace où les pratiques cinématographiques peuvent se réinventer, au plus près de la diversité et des dynamiques du territoire marseillais, français et international.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -169,8 +280,8 @@ const Festival = () => {
 
                   <p>Le festival propose projections, rencontres avec les réalisateurs, tables rondes et événements de networking dans une ambiance conviviale et inspirante.</p>
                 </div>
-                <div className="image-placeholder">
-                  <img src={flyer} alt="Qu'est-ce que le FIIDI Festival" />
+                <div className="image-placeholder flyer-container">
+                  <img src={flyer3} alt="Qu'est-ce que le FIIDI Festival" />
                 </div>
               </div>
 
@@ -210,15 +321,15 @@ const Festival = () => {
               {/* Archives Section */}
               <div className="archives-section">
                 <h2 className="yellow-bg section-title archives-title" onClick={() => setShowArchives(!showArchives)}>
-                  Archives - FIIDI Festival 2 
+                  Archives - FIIDI Festival 2
                   <span className={`archives-toggle ${showArchives ? 'open' : ''}`}>▼</span>
                 </h2>
-                
+
                 {showArchives && (
                   <div className="archives-content">
                     <div className="content-block reverse">
-                      <div className="image-placeholder">
-                        <img src={flyer} alt="FIIDI Festival 2" />
+                      <div className="image-placeholder flyer-container">
+                        <img src={flyer2} alt="FIIDI Festival 2" />
                       </div>
                       <div className="text-content">
                         <h3>FIIDI Festival 2 - 2024</h3>
@@ -233,100 +344,100 @@ const Festival = () => {
                     <div className="festival-images-section">
                       <h3 className="archive-subtitle">Retour en images sur le FIIDI Festival 2</h3>
 
-                <div className="carousel-container">
-                  <div className="carousel">
-                    <button className="carousel-btn carousel-btn-prev" onClick={prevSlide}>
-                      &#8249;
-                    </button>
+                      <div className="carousel-container">
+                        <div className="carousel">
+                          <button className="carousel-btn carousel-btn-prev" onClick={prevSlide}>
+                            &#8249;
+                          </button>
 
-                    <div className="carousel-track" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
-                      {Array.from({ length: totalSlides }, (_, slideIndex) => {
-                        const startIndex = slideIndex * imagesPerSlide;
-                        const slideImages = festivalImages.slice(startIndex, startIndex + imagesPerSlide);
+                          <div className="carousel-track" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+                            {Array.from({ length: totalSlides }, (_, slideIndex) => {
+                              const startIndex = slideIndex * imagesPerSlide;
+                              const slideImages = festivalImages.slice(startIndex, startIndex + imagesPerSlide);
 
-                        return (
-                          <div key={slideIndex} className="carousel-slide multi-image-slide">
-                            {slideImages.map((image, imageIndex) => (
-                              <div key={imageIndex} className="image-item">
-                                <img src={image.src} alt={image.alt} />
-                              </div>
-                            ))}
+                              return (
+                                <div key={slideIndex} className="carousel-slide multi-image-slide">
+                                  {slideImages.map((image, imageIndex) => (
+                                    <div key={imageIndex} className="image-item">
+                                      <img src={image.src} alt={image.alt} />
+                                    </div>
+                                  ))}
+                                </div>
+                              );
+                            })}
                           </div>
-                        );
-                      })}
+
+                          <button className="carousel-btn carousel-btn-next" onClick={nextSlide}>
+                            &#8250;
+                          </button>
+                        </div>
+
+                        <div className="carousel-indicators">
+                          {Array.from({ length: totalSlides }, (_, index) => (
+                            <button
+                              key={index}
+                              className={`carousel-indicator ${index === currentSlide ? 'active' : ''}`}
+                              onClick={() => goToSlide(index)}
+                            />
+                          ))}
+                        </div>
+                      </div>
                     </div>
 
-                    <button className="carousel-btn carousel-btn-next" onClick={nextSlide}>
-                      &#8250;
-                    </button>
-                  </div>
+                    <h3 className="archive-subtitle">Témoignages Vidéo - Festival 2</h3>
 
-                  <div className="carousel-indicators">
-                    {Array.from({ length: totalSlides }, (_, index) => (
-                      <button
-                        key={index}
-                        className={`carousel-indicator ${index === currentSlide ? 'active' : ''}`}
-                        onClick={() => goToSlide(index)}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
+                    <div className="video-testimonials-grid">
+                      <div className="video-testimonial-card">
+                        <div className="video-container">
+                          <video
+                            src={feedback1}
+                            controls
+                            playsInline
+                            preload="metadata"
+                            className="testimonial-video"
+                          >
+                            Votre navigateur ne supporte pas la lecture vidéo.
+                          </video>
+                        </div>
+                        <div className="video-caption">
+                          <p>"Le FIIDI Festival a été un véritable tremplin pour mon film..."</p>
+                        </div>
+                      </div>
 
-              <h3 className="archive-subtitle">Témoignages Vidéo - Festival 2</h3>
+                      <div className="video-testimonial-card">
+                        <div className="video-container">
+                          <video
+                            src={feedback2}
+                            controls
+                            playsInline
+                            preload="metadata"
+                            className="testimonial-video"
+                          >
+                            Votre navigateur ne supporte pas la lecture vidéo.
+                          </video>
+                        </div>
+                        <div className="video-caption">
+                          <p>"L'ambiance unique du festival, mêlant professionnalisme..."</p>
+                        </div>
+                      </div>
 
-              <div className="video-testimonials-grid">
-                <div className="video-testimonial-card">
-                  <div className="video-container">
-                    <video
-                      src={feedback1}
-                      controls
-                      playsInline
-                      preload="metadata"
-                      className="testimonial-video"
-                    >
-                      Votre navigateur ne supporte pas la lecture vidéo.
-                    </video>
-                  </div>
-                  <div className="video-caption">
-                    <p>"Le FIIDI Festival a été un véritable tremplin pour mon film..."</p>
-                  </div>
-                </div>
-
-                <div className="video-testimonial-card">
-                  <div className="video-container">
-                    <video
-                      src={feedback2}
-                      controls
-                      playsInline
-                      preload="metadata"
-                      className="testimonial-video"
-                    >
-                      Votre navigateur ne supporte pas la lecture vidéo.
-                    </video>
-                  </div>
-                  <div className="video-caption">
-                    <p>"L'ambiance unique du festival, mêlant professionnalisme..."</p>
-                  </div>
-                </div>
-
-                <div className="video-testimonial-card">
-                  <div className="video-container">
-                    <video
-                      src={feedback3}
-                      controls
-                      playsInline
-                      preload="metadata"
-                      className="testimonial-video"
-                    >
-                      Votre navigateur ne supporte pas la lecture vidéo.
-                    </video>
-                  </div>
-                  <div className="video-caption">
-                    <p>"J'ai pu rencontrer des réalisateurs passionnants..."</p>
-                  </div>
-                </div>
-              </div>
+                      <div className="video-testimonial-card">
+                        <div className="video-container">
+                          <video
+                            src={feedback3}
+                            controls
+                            playsInline
+                            preload="metadata"
+                            className="testimonial-video"
+                          >
+                            Votre navigateur ne supporte pas la lecture vidéo.
+                          </video>
+                        </div>
+                        <div className="video-caption">
+                          <p>"J'ai pu rencontrer des réalisateurs passionnants..."</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 )}
               </div>

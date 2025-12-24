@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useTheme } from '../../context/ThemeContext';
 import './Header.css';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { isDarkMode, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -86,7 +88,7 @@ const Header = () => {
               <li>
                 <Link
                   to="https://app.fiidi.fr/seConnecter"
-                  className={`nav-link ${isActiveLink('/seconnecter') ? 'active' : ''}`}
+                  className="nav-link-login"
                   onClick={closeMobileMenu}
                 >
                   Se connecter
@@ -98,11 +100,29 @@ const Header = () => {
                   className="btn btn-primary create-account-button"
                   onClick={closeMobileMenu}
                 >
-                  Créer un compte
+                  S'inscrire
                 </Link>
               </li>
+              <li>
+                <button
+                  className="theme-toggle"
+                  onClick={toggleTheme}
+                  aria-label={isDarkMode ? 'Activer le mode clair' : 'Activer le mode sombre'}
+                  title={isDarkMode ? 'Mode clair' : 'Mode sombre'}
+                >
+                  {isDarkMode ? (
+                    <svg className="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="12" cy="12" r="5"/>
+                      <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    </svg>
+                  ) : (
+                    <svg className="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                  )}
+                </button>
+              </li>
             </ul>
-            <button className="btn-login">Se connecter</button>
           </nav>
 
           <button
@@ -157,7 +177,7 @@ const Header = () => {
           <li>
             <Link
               to="https://app.fiidi.fr/seConnecter"
-              className={`mobile-nav-link ${isActiveLink('/contact') ? 'active' : ''}`}
+              className="mobile-nav-link-login"
               onClick={closeMobileMenu}
             >
               Se connecter
@@ -169,8 +189,32 @@ const Header = () => {
               className={`mobile-nav-link ${isActiveLink('/contact') ? 'active' : ''}`}
               onClick={closeMobileMenu}
             >
-              Créer un compte
+              S'inscrire
             </Link>
+          </li>
+          <li className="mobile-theme-toggle-container">
+            <button
+              className="mobile-theme-toggle"
+              onClick={toggleTheme}
+              aria-label={isDarkMode ? 'Activer le mode clair' : 'Activer le mode sombre'}
+            >
+              {isDarkMode ? (
+                <>
+                  <svg className="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="12" cy="12" r="5"/>
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                  </svg>
+                  <span>Mode clair</span>
+                </>
+              ) : (
+                <>
+                  <svg className="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                  </svg>
+                  <span>Mode sombre</span>
+                </>
+              )}
+            </button>
           </li>
         </ul>
       </div>
