@@ -731,8 +731,15 @@ body.dark-mode .hero-stat-label {
 /* Section Stats */
 .app-stats {
   padding: 4rem 0;
-  border-top: 1px solid rgba(255, 215, 0, 0.1);
-  background-color: rgba(30, 30, 30, 0.8);
+  border-top: 1px solid var(--border-color) !important;
+  background-color: var(--bg-primary) !important;
+  background: var(--bg-primary) !important;
+}
+
+body.dark-mode .app-stats {
+  border-top: 1px solid rgba(255, 215, 0, 0.1) !important;
+  background-color: rgba(30, 30, 30, 0.8) !important;
+  background: rgba(30, 30, 30, 0.8) !important;
 }
 
 .app-stats .hero-stats {
@@ -741,9 +748,22 @@ body.dark-mode .hero-stat-label {
 }
 
 .app-stats .hero-stat {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 215, 0, 0.15);
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
   min-width: 180px;
+}
+
+body.dark-mode .app-stats .hero-stat {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 215, 0, 0.15) !important;
+}
+
+.app-stats .hero-stat-label {
+  color: var(--text-secondary) !important;
+}
+
+body.dark-mode .app-stats .hero-stat-label {
+  color: rgba(255, 255, 255, 0.8) !important;
 }
 
 .app-description {

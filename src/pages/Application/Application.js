@@ -1,7 +1,31 @@
 import React, { useEffect, useState } from 'react';
+import SEO from '../../components/SEO/SEO';
 import './Application.css';
 
 const Application = () => {
+  // Données structurées pour la page Application
+  const appStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "FIIDI App - Application mobile du cinéma indépendant",
+    "description": "Le premier réseau social dédié aux métiers de l'audiovisuel. Créez votre profil, publiez des annonces, élargissez votre réseau.",
+    "url": "https://fiidi.com/application",
+    "mainEntity": {
+      "@type": "MobileApplication",
+      "name": "FIIDI",
+      "operatingSystem": ["iOS", "Android"],
+      "applicationCategory": "SocialNetworkingApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "downloadUrl": [
+        "https://apps.apple.com/fr/app/fiidi/id6504772951",
+        "https://play.google.com/store/apps/details?id=com.mycompany.fiidi"
+      ]
+    }
+  };
   const [isLoaded, setIsLoaded] = useState(false);
   const [showDownloadModal, setShowDownloadModal] = useState(false);
 
@@ -42,6 +66,12 @@ const Application = () => {
 
   return (
     <div className="application-page">
+      <SEO
+        title="Application FIIDI - Réseau Social du Cinéma"
+        description="Téléchargez FIIDI, l'application gratuite pour les professionnels du cinéma indépendant. Créez votre profil, publiez des annonces de casting, collaborez avec +1000 talents."
+        keywords="FIIDI app, application cinéma, réseau social audiovisuel, casting application, profil professionnel cinéma, annonces cinéma, collaboration film, télécharger FIIDI"
+        structuredData={appStructuredData}
+      />
       <section className="app-hero">
         <div className="app-hero-content">
           <div className="app-hero-left">

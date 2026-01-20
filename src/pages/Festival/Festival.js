@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import SEO from '../../components/SEO/SEO';
 import './Festival.css';
 
 import festival1 from '../../assets/images/festival/207A9731.jpg';
@@ -13,13 +14,10 @@ import festival9 from '../../assets/images/festival/_04A2310.jpg';
 import festival10 from '../../assets/images/festival/_04A2314.jpg';
 import festival11 from '../../assets/images/festival/_04A2316.jpg';
 import festival12 from '../../assets/images/festival/_04A2326.jpg';
-import festival13 from '../../assets/images/festival/_07A9704.jpg';
 import festival14 from '../../assets/images/festival/_07A9705.jpg';
 import festival15 from '../../assets/images/festival/_07A9710.jpg';
 import festival16 from '../../assets/images/festival/_07A9728.jpg';
-import festival17 from '../../assets/images/festival/_07A9803.jpg';
 import festival18 from '../../assets/images/festival/_07A9811.jpg';
-import festival19 from '../../assets/images/festival/_07A9814.jpg';
 import heroBackground from '../../assets/images/festival/_07A9798.jpg';
 import flyer2 from '../../assets/images/festival/fiidifestival2.png';
 import flyer3 from '../../assets/images/festival/fiidifestival3.png';
@@ -38,6 +36,41 @@ import feedback3 from '../../assets/videos/temoignages/feedback3.mp4';
 const Festival = () => {
   const [showArchives, setShowArchives] = useState(false);
   const observerRef = useRef(null);
+
+  // Données structurées pour la page Festival
+  const festivalStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "FIIDI Festival - Festival du Cinéma Indépendant à Marseille",
+    "description": "Festival annuel du cinéma indépendant. Projections, rencontres avec réalisateurs, tables rondes. +400 films reçus, 17 pays.",
+    "url": "https://fiidi.com/festival",
+    "mainEntity": {
+      "@type": "Event",
+      "name": "FIIDI Festival 2026",
+      "description": "Festival annuel célébrant les talents émergents du cinéma indépendant à Marseille. Projections de courts-métrages, rencontres professionnelles et networking.",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Marseille",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Marseille",
+          "addressCountry": "FR"
+        }
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "FIIDI",
+        "url": "https://fiidi.com"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.filmfestplatform.com/fr/festival/5150",
+        "description": "Soumission de films pour le festival"
+      }
+    }
+  };
 
   // Scroll animations
   useEffect(() => {
@@ -63,25 +96,22 @@ const Festival = () => {
   }, []);
 
   const festivalImages = [
-    { src: festival1, alt: "FIIDI Festival 2 - Moment 1" },
-    { src: festival2, alt: "FIIDI Festival 2 - Moment 2" },
-    { src: festival3, alt: "FIIDI Festival 2 - Moment 3" },
-    { src: festival4, alt: "FIIDI Festival 2 - Moment 4" },
-    { src: festival5, alt: "FIIDI Festival 2 - Moment 5" },
-    { src: festival6, alt: "FIIDI Festival 2 - Moment 6" },
-    { src: festival7, alt: "FIIDI Festival 2 - Moment 7" },
-    { src: festival8, alt: "FIIDI Festival 2 - Moment 8" },
-    { src: festival9, alt: "FIIDI Festival 2 - Moment 9" },
-    { src: festival10, alt: "FIIDI Festival 2 - Moment 10" },
-    { src: festival11, alt: "FIIDI Festival 2 - Moment 11" },
-    { src: festival12, alt: "FIIDI Festival 2 - Moment 12" },
-    { src: festival13, alt: "FIIDI Festival 2 - Moment 13" },
-    { src: festival14, alt: "FIIDI Festival 2 - Moment 14" },
-    { src: festival15, alt: "FIIDI Festival 2 - Moment 15" },
-    { src: festival16, alt: "FIIDI Festival 2 - Moment 16" },
-    { src: festival17, alt: "FIIDI Festival 2 - Moment 17" },
-    { src: festival18, alt: "FIIDI Festival 2 - Moment 18" },
-    { src: festival19, alt: "FIIDI Festival 2 - Moment 19" }
+    { src: festival1, alt: "Public du FIIDI Festival 2024 lors d'une projection de court-métrage à Marseille" },
+    { src: festival2, alt: "Réalisateurs et talents émergents sur scène au FIIDI Festival de cinéma indépendant" },
+    { src: festival3, alt: "Table ronde avec professionnels du cinéma au FIIDI Festival Marseille" },
+    { src: festival4, alt: "Rencontre networking entre réalisateurs et producteurs au festival FIIDI" },
+    { src: festival5, alt: "Projection de films indépendants devant le public du FIIDI Festival" },
+    { src: festival6, alt: "Ambiance festive et conviviale au FIIDI Festival du cinéma à Marseille" },
+    { src: festival7, alt: "Échange entre jeunes réalisateurs et mentors au festival de cinéma FIIDI" },
+    { src: festival8, alt: "Session de networking professionnel lors du FIIDI Festival 2024" },
+    { src: festival9, alt: "Remise de prix aux talents du cinéma indépendant au FIIDI Festival" },
+    { src: festival10, alt: "Discussion entre participants et réalisateurs au festival FIIDI Marseille" },
+    { src: festival11, alt: "Moment de partage entre passionnés de cinéma au FIIDI Festival" },
+    { src: festival12, alt: "Découverte de nouveaux talents du cinéma indépendant au festival FIIDI" },
+    { src: festival14, alt: "Séance de questions-réponses avec un réalisateur au FIIDI Festival" },
+    { src: festival15, alt: "Public enthousiaste lors d'une projection au festival de cinéma FIIDI" },
+    { src: festival16, alt: "Rencontre entre professionnels de l'audiovisuel au FIIDI Festival Marseille" },
+    { src: festival18, alt: "Clôture festive du FIIDI Festival 2024 avec tous les participants" }
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -125,6 +155,12 @@ const Festival = () => {
 
   return (
     <div className="festival-page">
+      <SEO
+        title="FIIDI Festival - Festival du Cinéma Indépendant Marseille"
+        description="Participez au FIIDI Festival à Marseille ! Festival de cinéma indépendant : projections de courts-métrages, rencontres avec réalisateurs, networking. +400 films, 17 pays. Soumettez votre film avant le 20 février 2026."
+        keywords="FIIDI festival, festival cinéma Marseille, festival cinéma indépendant, court-métrage festival, soumettre film festival, projection cinéma, réalisateurs émergents, festival 2026"
+        structuredData={festivalStructuredData}
+      />
       {/* Hero Section */}
       <section className="festival-hero" style={{ backgroundImage: `url(${heroBackground})` }}>
         <div className="hero-overlay"></div>
@@ -281,7 +317,7 @@ const Festival = () => {
                   <p>Le festival propose projections, rencontres avec les réalisateurs, tables rondes et événements de networking dans une ambiance conviviale et inspirante.</p>
                 </div>
                 <div className="image-placeholder flyer-container">
-                  <img src={flyer3} alt="Qu'est-ce que le FIIDI Festival" />
+                  <img src={flyer3} alt="Affiche officielle FIIDI Festival 2026 - Festival du cinéma indépendant à Marseille" />
                 </div>
               </div>
 
@@ -290,28 +326,28 @@ const Festival = () => {
               <div className="program-grid">
                 <div className="program-card">
                   <div className="program-image">
-                    <img src={heroBackground} alt="Projections" />
+                    <img src={heroBackground} alt="Projections de courts-métrages indépendants au FIIDI Festival Marseille" />
                   </div>
                   <h3>Projections</h3>
                   <p>Découvrez une sélection de films indépendants</p>
                 </div>
                 <div className="program-card">
                   <div className="program-image">
-                    <img src={festival19} alt="Rencontres" />
+                    <img src={festival14} alt="Rencontres avec réalisateurs et équipes de tournage au festival FIIDI" />
                   </div>
                   <h3>Rencontres</h3>
                   <p>Échangez avec les réalisateurs et équipes</p>
                 </div>
                 <div className="program-card">
                   <div className="program-image">
-                    <img src={festival4} alt="Table ronde" />
+                    <img src={festival4} alt="Table ronde professionnelle sur le cinéma indépendant au FIIDI Festival" />
                   </div>
                   <h3>Table ronde</h3>
                   <p>Participez à des discussions professionnelles</p>
                 </div>
                 <div className="program-card">
                   <div className="program-image">
-                    <img src={festival8} alt="Networking" />
+                    <img src={festival8} alt="Session de networking entre professionnels du cinéma au festival FIIDI" />
                   </div>
                   <h3>Networking</h3>
                   <p>Créez des connexions dans l'industrie</p>
@@ -329,7 +365,7 @@ const Festival = () => {
                   <div className="archives-content">
                     <div className="content-block reverse">
                       <div className="image-placeholder flyer-container">
-                        <img src={flyer2} alt="FIIDI Festival 2" />
+                        <img src={flyer2} alt="Affiche FIIDI Festival 2 édition 2024 - Archives du festival de cinéma indépendant" />
                       </div>
                       <div className="text-content">
                         <h3>FIIDI Festival 2 - 2024</h3>
@@ -446,22 +482,22 @@ const Festival = () => {
 
               <div className="partners-grid">
                 <div className="partner-logo">
-                  <img src={partner2} alt="Partenaire 2" />
+                  <img src={partner2} alt="Logo partenaire officiel du FIIDI Festival de cinéma indépendant" />
                 </div>
                 <div className="partner-logo">
-                  <img src={partner3} alt="Partenaire 3" />
+                  <img src={partner3} alt="Partenaire institutionnel soutenant le festival FIIDI Marseille" />
                 </div>
                 <div className="partner-logo">
-                  <img src={partner4} alt="Partenaire 4" />
+                  <img src={partner4} alt="Sponsor du FIIDI Festival - événement cinéma indépendant" />
                 </div>
                 <div className="partner-logo">
-                  <img src={partner5} alt="Partenaire 5" />
+                  <img src={partner5} alt="Partenaire culturel du festival de cinéma FIIDI" />
                 </div>
                 <div className="partner-logo">
-                  <img src={partner6} alt="Partenaire 6" />
+                  <img src={partner6} alt="Partenaire média du FIIDI Festival à Marseille" />
                 </div>
                 <div className="partner-logo">
-                  <img src={partner7} alt="Partenaire 7" />
+                  <img src={partner7} alt="Soutien officiel du festival FIIDI - cinéma indépendant français" />
                 </div>
               </div>
             </div>

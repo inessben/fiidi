@@ -1,10 +1,31 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../../components/SEO/SEO';
 import './Home.css';
 import heroBackground from '../../assets/images/homepage/hero.jpg';
 
 const Home = () => {
   const observerRef = useRef(null);
+
+  // Données structurées spécifiques à la page d'accueil
+  const homeStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://fiidi.com/#webpage",
+    "url": "https://fiidi.com/",
+    "name": "FIIDI - Application et Festival du Cinéma Indépendant",
+    "description": "FIIDI connecte les talents du cinéma indépendant via une application mobile gratuite et un festival annuel à Marseille.",
+    "isPartOf": {
+      "@id": "https://fiidi.com/#website"
+    },
+    "about": {
+      "@id": "https://fiidi.com/#organization"
+    },
+    "primaryImageOfPage": {
+      "@type": "ImageObject",
+      "url": "https://fiidi.com/logo512.png"
+    }
+  };
 
   useEffect(() => {
     // Intersection Observer for scroll animations
@@ -31,6 +52,12 @@ const Home = () => {
 
   return (
     <div className="home">
+      <SEO
+        title="Accueil"
+        description="FIIDI connecte les talents du cinéma indépendant. Téléchargez l'application gratuite et participez au festival annuel à Marseille. +1000 professionnels, 50+ métiers du cinéma."
+        keywords="FIIDI, fiidi app, cinéma indépendant, application cinéma, réseau social cinéma, casting, réalisateur, acteur, producteur, collaboration audiovisuelle, talents cinéma France"
+        structuredData={homeStructuredData}
+      />
       {/* Hero Section */}
       <section className="hero-wrapper">
         <div className="hero-background" style={{ backgroundImage: `url(${heroBackground})` }}></div>

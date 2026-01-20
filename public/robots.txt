@@ -1,30 +1,77 @@
+# robots.txt pour FIIDI - https://fiidi.com
+# Application et Festival du Cinéma Indépendant
+
+# Directives générales pour tous les robots
 User-agent: *
 Allow: /
 
-# Pages principales
+# Pages principales à indexer
 Allow: /
 Allow: /application
 Allow: /festival
-Allow: /blog
+Allow: /contact
 
-# Ressources statiques
+# Pages légales
+Allow: /legal/mentions
+Allow: /legal/privacy
+Allow: /legal/terms
+Allow: /legal/cookies
+Allow: /legal/sitemap
+
+# Ressources statiques autorisées
 Allow: /static/
-Allow: /images/
-Allow: *.css
-Allow: *.js
-Allow: *.png
-Allow: *.jpg
-Allow: *.jpeg
-Allow: *.gif
-Allow: *.svg
-Allow: *.ico
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.ico
+Allow: /*.webp
 
-# Sitemap
-Sitemap: https://fiidi.com/sitemap.xml
+# Fichiers spécifiques
+Allow: /manifest.json
+Allow: /sitemap.xml
+Allow: /robots.txt
 
-# Crawl-delay pour éviter la surcharge
+# Interdire les fichiers sensibles et inutiles pour l'indexation
+Disallow: /*.map
+Disallow: /static/js/*.map
+Disallow: /static/css/*.map
+
+# Directives spécifiques pour Googlebot
+User-agent: Googlebot
+Allow: /
 Crawl-delay: 1
 
-# Interdictions (si nécessaire)
-# Disallow: /admin/
-# Disallow: /api/
+# Directives spécifiques pour Googlebot Images
+User-agent: Googlebot-Image
+Allow: /
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.png
+Allow: /*.gif
+Allow: /*.webp
+Allow: /*.svg
+
+# Directives pour Bingbot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+# Directives pour les réseaux sociaux
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Sitemap principal
+Sitemap: https://fiidi.com/sitemap.xml
+
+# Host canonique
+Host: https://fiidi.com

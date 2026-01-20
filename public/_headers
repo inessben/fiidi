@@ -1,0 +1,61 @@
+# Headers HTTP pour optimiser les performances et le SEO
+# Compatible avec Netlify, Vercel, et autres hébergeurs
+
+/*
+  # Sécurité
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Cache pour les fichiers statiques (1 an)
+/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache pour les images (1 mois)
+/*.jpg
+  Cache-Control: public, max-age=2592000
+
+/*.jpeg
+  Cache-Control: public, max-age=2592000
+
+/*.png
+  Cache-Control: public, max-age=2592000
+
+/*.gif
+  Cache-Control: public, max-age=2592000
+
+/*.webp
+  Cache-Control: public, max-age=2592000
+
+/*.svg
+  Cache-Control: public, max-age=2592000
+
+/*.ico
+  Cache-Control: public, max-age=2592000
+
+# Cache pour les polices (1 an)
+/*.woff
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache court pour HTML (5 minutes) - permet les mises à jour SEO
+/*.html
+  Cache-Control: public, max-age=300
+
+/
+  Cache-Control: public, max-age=300
+
+# Pas de cache pour sitemap et robots (toujours frais)
+/sitemap.xml
+  Cache-Control: no-cache
+
+/robots.txt
+  Cache-Control: no-cache
+
+# Manifest PWA (1 jour)
+/manifest.json
+  Cache-Control: public, max-age=86400
