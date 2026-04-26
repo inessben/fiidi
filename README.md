@@ -24,6 +24,16 @@ Le site sera accessible sur [http://localhost:3000](http://localhost:3000)
 npm run build
 ```
 
+### Déploiement
+```bash
+npm run deploy
+```
+
+Si vous avez déjà généré le build et souhaitez uniquement lancer le déploiement :
+```bash
+npm run deploy:only
+```
+
 ## 📁 Structure du projet
 
 ```

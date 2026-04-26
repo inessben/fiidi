@@ -174,7 +174,6 @@ const Festival = () => {
 
         <div className="hero-container">
           <div className="hero-content">
-
             <h1 className="hero-title animate-fade-in-up">
               <span className="festival-name gradient-text-animated">FIIDI FESTIVAL</span>
             </h1>
@@ -187,17 +186,6 @@ const Festival = () => {
               Rejoignez-nous pour célébrer les talents émergents et découvrir les nouvelles voix du cinéma.
             </p>
 
-            <div className="hero-buttons animate-fade-in-up stagger-4">
-              <a href="https://www.filmfestplatform.com/fr/festival/5150" target="_blank" rel="noopener noreferrer" className="btn-hero btn-primary btn-magnetic">
-                <span>Soumettre un film</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </a>
-              <button className="btn-hero btn-secondary" onClick={() => document.getElementById('call-for-films').scrollIntoView({ behavior: 'smooth' })}>
-                En savoir plus
-              </button>
-            </div>
           </div>
         </div>
 
@@ -206,7 +194,30 @@ const Festival = () => {
           <div className="scroll-line"></div>
         </div>
       </section>
-
+        <iframe
+          id="haWidget"
+          allowtransparency="true"
+          scrolling="auto"
+          src="https://www.helloasso.com/associations/fiidi/evenements/fiidi-festival-3eme-edition/widget"
+          style={{ width: '100%', height: '750px', border: 'none' }}
+          title="FIIDI Festival Widget"
+          onLoad={() => {
+            window.addEventListener('message', function (e) {
+              const dataHeight = e.data.height;
+              const haWidgetElement = document.getElementById('haWidget');
+              if (dataHeight > parseFloat(haWidgetElement.height || 0)) {
+                haWidgetElement.height = dataHeight + 'px';
+              }
+            });
+          }}
+        ></iframe>
+        <iframe
+          id="haWidgetButton"
+          allowtransparency="true"
+          src="https://www.helloasso.com/associations/fiidi/evenements/fiidi-festival-3eme-edition/widget-bouton"
+          style={{ width: '100%', height: '70px', border: 'none' }}
+          title="FIIDI Festival Button Widget"
+        ></iframe>
       {/* Stats Section */}
       <section className="stats-section">
         <div className="container">
@@ -245,38 +256,6 @@ const Festival = () => {
         </div>
       </section>
 
-      {/* Call for Films Section */}
-      <section className="call-for-films-section" id="call-for-films">
-        <div className="container">
-          <div className="call-for-films-content">
-            <h2 className="call-for-films-title">Vous avez un film à défendre ?</h2>
-            <p className="call-for-films-description">
-              FIIDI met en lumière celles et ceux qui créent en dehors des circuits traditionnels et qui osent raconter autrement.
-              <br></br>Date limite d'envoi
-              <span className="deadline-date"> 20 Février 2026</span>
-            </p>
-
-            <div className="submission-conditions">
-              <h3>Conditions de participation</h3>
-              <ul className="conditions-list">
-                <li><span className="condition-icon">🎬</span> Court-métrage de fiction</li>
-                <li><span className="condition-icon">⏱️</span> Durée maximale : 25 minutes</li>
-                <li><span className="condition-icon">🎥</span> Production indépendante / petit budget</li>
-              </ul>
-            </div>
-
-
-            <a
-              href="https://www.filmfestplatform.com/fr/festival/5150"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-submit-film"
-            >
-              Soumettre votre film
-            </a>
-          </div>
-        </div>
-      </section>
 
       {/* Objectif Section */}
       <section className="objectif-section">
