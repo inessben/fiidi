@@ -52,6 +52,23 @@ const Home = () => {
 
   return (
     <div className="home">
+      <iframe 
+        id="haWidget" 
+        allowtransparency="true" 
+        scrolling="auto" 
+        src="https://www.helloasso.com/associations/fiidi/evenements/fiidi-festival-3eme-edition/widget" 
+        style={{ width: '100%', height: '750px', border: 'none' }} 
+        title="FIIDI Festival Widget"
+        onload="window.addEventListener('message', function(e) { const dataHeight = e.data.height; const haWidgetElement = document.getElementById('haWidget'); 
+  if (dataHeight > parseFloat(haWidgetElement.height || 0)) { haWidgetElement.height = dataHeight + 'px';}})"
+      ></iframe>
+      <iframe 
+        id="haWidgetButton" 
+        allowtransparency="true" 
+        src="https://www.helloasso.com/associations/fiidi/evenements/fiidi-festival-3eme-edition/widget-bouton" 
+        style={{ width: '100%', height: '70px', border: 'none' }} 
+        title="FIIDI Festival Button Widget"
+      ></iframe>
       <SEO
         title="Accueil"
         description="FIIDI connecte les talents du cinéma indépendant. Téléchargez l'application gratuite et participez au festival annuel à Marseille. +1000 professionnels, 50+ métiers du cinéma."
