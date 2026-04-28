@@ -1,4 +1,4 @@
-.contact-page {
+﻿.contact-page {
   margin-top: 0;
 }
 
@@ -10,7 +10,7 @@
 }
 
 body.dark-mode .contact-hero {
-  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+  background: var(--bg-secondary);
 }
 
 .hero-container {
@@ -25,15 +25,16 @@ body.dark-mode .contact-hero {
 }
 
 .contact-page .hero-title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 700;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
   color: var(--text-primary);
   margin-bottom: 1.5rem;
 }
 
 body.dark-mode .contact-page .hero-title {
-  color: #FFD700;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  color: var(--primary-gold);
 }
 
 .hero-description {
@@ -75,25 +76,22 @@ body.dark-mode .contact-page .hero-title {
   position: absolute;
   bottom: -0.5rem;
   left: 0;
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, #FFD700, #FFC107);
-  border-radius: 2px;
+  width: 48px;
+  height: 1px;
+  background: var(--primary-gold);
 }
 
 .contact-form {
   background: var(--bg-card);
   padding: 2.5rem;
-  border-radius: 20px;
+  border-radius: var(--border-radius-large);
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow-light);
 }
 
 body.dark-mode .contact-form {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 215, 0, 0.1);
-  backdrop-filter: blur(10px);
-  box-shadow: none;
+  background: var(--bg-card);
+  border-color: rgba(201, 150, 58, 0.1);
 }
 
 .form-row {
@@ -176,26 +174,24 @@ body.dark-mode .form-group textarea:focus {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #FFD700, #FFC107);
-  color: #000;
-  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+  background: var(--gradient-primary);
+  color: #1A1612;
+  box-shadow: 0 4px 16px rgba(201, 150, 58, 0.2);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #FFC107, #FF6B35);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+  box-shadow: 0 8px 24px rgba(201, 150, 58, 0.3);
 }
 
 .btn-secondary {
   background: transparent;
   color: var(--primary-gold);
-  border: 2px solid var(--primary-gold);
+  border: 1px solid rgba(201, 150, 58, 0.4);
 }
 
 .btn-secondary:hover {
-  background: var(--primary-gold);
-  color: #000;
+  background: rgba(201, 150, 58, 0.08);
   transform: translateY(-2px);
 }
 
@@ -213,10 +209,9 @@ body.dark-mode .form-group textarea:focus {
   position: absolute;
   bottom: -0.5rem;
   left: 0;
-  width: 40px;
-  height: 3px;
-  background: linear-gradient(90deg, #FFD700, #FFC107);
-  border-radius: 2px;
+  width: 32px;
+  height: 1px;
+  background: var(--primary-gold);
 }
 
 .contact-info-grid {
@@ -421,8 +416,8 @@ body.dark-mode .contact-cta {
 }
 
 body.dark-mode .instagram-section {
-  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
-  border-top: 1px solid rgba(255, 215, 0, 0.1);
+  background: var(--bg-secondary);
+  border-top-color: rgba(201, 150, 58, 0.08);
 }
 
 .instagram-card {

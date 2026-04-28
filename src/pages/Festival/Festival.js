@@ -232,7 +232,7 @@ const Festival = () => {
               <div className="stat-icon-wrapper">
                 <span className="stat-icon">🎬</span>
               </div>
-              <span className="stat-number counter">+400</span>
+              <span className="stat-number counter">+800</span>
               <span className="stat-label">Films reçus</span>
               <div className="stat-card-glow"></div>
             </div>
